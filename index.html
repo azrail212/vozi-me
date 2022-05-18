@@ -61,6 +61,7 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="js/user-service.js"></script>
 
 
 
@@ -107,36 +108,36 @@
     <div class="modal-content">
       <form id="signupForm">
         <div class="modal-header">
-          <h5 class="modal-title" id="signupModalLabel">Add a new category</h5>
+          <h5 class="modal-title" id="signupModalLabel">Signup as a new user</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="form-group">
             <label for="signup_username">Username</label>
-            <input id= "signup_username" name="signup_username" type="text" class="form-control required" placeholder="Enter username">
+            <input id= "username" name="username" type="text" class="form-control required" placeholder="Enter username">
           </div>
           <div class="form-group">
             <label for="signup_email">Email</label>
-            <input id="signup_email" name="signup_email" class="form-control required" placeholder="Email">
+            <input id="email" name="email" class="form-control required" placeholder="Email">
           </div>
           <div class="form-group">
             <label for="signup_password">Password</label>
-            <input type="password" id="signup_password" name="signup_password" class="form-control required" placeholder="Password">
+            <input type="password" id="password" name="password" class="form-control required" placeholder="Password">
           </div>
           <div class="form-group">
             <label for="signup_driver">Are you a taxi driver?</label>
-            <input type="radio" name="yes_no">Yes</input>
-            <input type="radio" name="yes_no" checked>No</input>
+            <input type="radio" name="driver">Yes</input>
+            <input type="radio" name="driver" checked>No</input>
           </div>
           <div class="form-group">
             <label for="start">Date of birth:</label>
-            <input type="date" id="signup_dob" name="signup_dob" value="2000-01-01"
+            <input type="date" id="dob" name="dob" value="2000-01-01"
             min="1900-01-01" max="2022-01-01">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard changes</button>
-          <button type="submit" onclick="" class="btn btn-primary">Register</button> <!-- code add to db here-->
+          <button type="submit" onclick="UserService.register_user()" class="btn btn-primary">Register</button> <!-- code add to db here-->
         </div>
       </form>
     </div>
@@ -149,7 +150,7 @@
     <div class="modal-content">
       <form id="loginForm">
         <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Add a new category</h5>
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
