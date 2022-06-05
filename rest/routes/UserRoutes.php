@@ -1,5 +1,7 @@
 <?php
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
  /**
  * Function to list all categories

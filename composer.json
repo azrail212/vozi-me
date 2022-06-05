@@ -3,5 +3,6 @@
         "mikecao/flight": "^2.0",
         "zircote/swagger-php": "3.*",
         "friendsofphp/php-cs-fixer": "^3.8",
+        "firebase/php-jwt": "6.1"
     }
 }
