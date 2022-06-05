@@ -1,50 +1,7 @@
 <?php
 
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
-
- /**
- * Function to list all categories
- */
-  Flight::route('GET /users', function()
-  {
-    Flight::json(Flight::userService()->get_all());
-  });
-
-/**
- * Get individual user
- */
-  Flight::route('GET /users/@id', function($id)
-  {
-   Flight::json(Flight::userService()->get_by_id($id));
-  });
-
- /**
-  * add user to db
-  */
-  Flight::route('POST /users', function()
-  {
-    Flight::json(Flight::userService()->add(Flight::request()->data->getData()));
-  });
-
-/**
- * delete user
- */
-  Flight::route('DELETE /users/@id', function($id)
-  {
-    Flight::userService()->delete($id);
-    Flight::json(["message" => "deleted"]);
-  });
-
-  /**
-   * update user by id
-   */
-  Flight::route('PUT /users/@id', function($id)
-  {
-    $data = Flight::request()->data->getData();
-    $data['id'] = $id;
-    Flight::json(Flight::userService()->update($id, $data));
-  });
+  use Firebase\JWT\JWT;
+  use Firebase\JWT\Key;
 
   /**
   * @OA\Post(

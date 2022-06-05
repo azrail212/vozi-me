@@ -1,37 +1,36 @@
 var UserService = {
-
-  init: function() {
-    $('#signupForm').validate({
+  init: function(){
+    var token = localStorage.getItem("token");
+    if (token){
+      window.location.replace("index.html");
+    }
+    $('#login-form').validate({
       submitHandler: function(form) {
-        var new_user = Object.fromEntries((new FormData(form)).entries());
-        console.log(new_user);
-        UserService.add(new_user);
-        toastr.info("Adding ...");
+        var entity = Object.fromEntries((new FormData(form)).entries());
+        UserService.login(entity);
       }
     });
   },
-  register_user: function(user_id){
-    $('#signupForm').validate({
-      submitHandler: function(form) {
-        var new_user = Object.fromEntries((new FormData(form)).entries());
-        console.log(new_user);
-        UserService.add(new_user);
-        toastr.info("Adding ...");
-      }
-    });
-  },
-
-  add:function(new_user){
+  login: function(entity){
     $.ajax({
-      url: 'rest/users/',
+      url: 'rest/login',
       type: 'POST',
-      data: JSON.stringify(new_user),
+      data: JSON.stringify(entity),
       contentType: "application/json",
       dataType: "json",
       success: function(result) {
-          $("#signupModal").modal("hide");
-          toastr.success("Added !");
+        console.log(result);
+        localStorage.setItem("token", result.token);
+        window.location.replace("index.html");
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
       }
     });
+  },
+
+  logout: function(){
+    localStorage.clear();
+    window.location.replace("login.html");
   },
 }
