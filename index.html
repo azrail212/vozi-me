@@ -36,7 +36,7 @@
         </ul>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-dark me-2">Log out</button>
+          <button type="button" class="btn btn-outline-dark me-2" onclick="UserService.logout()">Log out</button>
       </div>
     </div>
   </header>
@@ -49,8 +49,8 @@
           <h1 class="fw-light" style="color:#ffffff;">VoziMe Taxi App</h1>
           <p class="lead" style="color:#F7F7F7;">Welcome to the frontpage! </p>
           <p>
-            <a href="#" class="btn btn-primary my-2 btn-lg" data-bs-toggle="modal" data-bs-target="#signupModal">Sign up</a>
-            <a href="#" class="btn btn-primary my-2 btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</a>
+            <a href="#" class="btn btn-primary my-2 btn-lg" href="signup.html">Sign up</a>
+            <a href="#" class="btn btn-primary my-2 btn-lg" href="login.html">Log in</a>
           </p>
         </div>
       </div>
@@ -63,9 +63,6 @@
 <script src="js/jquery.validate.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="js/user-service.js"></script>
-
-
-
 
 <!-- Update Profile Modal -->
 <div class="modal fade" id="updateProfileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
@@ -102,76 +99,6 @@
     </div>
   </div>
 </div>
-
-<!-- Signup modal -->
-<div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form id="signupForm">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signupModalLabel">Signup as a new user</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="signup_username">Username</label>
-            <input id= "username" name="username" type="text" class="form-control required" placeholder="Enter username">
-          </div>
-          <div class="form-group">
-            <label for="signup_email">Email</label>
-            <input id="email" name="email" class="form-control required" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="signup_password">Password</label>
-            <input type="password" id="password" name="password" class="form-control required" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <label for="signup_driver">Are you a taxi driver?</label>
-            <input type="radio" name="driver">Yes</input>
-            <input type="radio" name="driver" checked>No</input>
-          </div>
-          <div class="form-group">
-            <label for="start">Date of birth:</label>
-            <input type="date" id="dob" name="dob" value="2000-01-01"
-            min="1900-01-01" max="2022-01-01">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard changes</button>
-          <button type="submit" onclick="UserService.register_user()" class="btn btn-primary">Register</button> <!-- code add to db here-->
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Login modal -->
-<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form id="loginForm">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Login</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="login_username">Username</label>
-            <input id= "login_username" name="login_username" type="text" class="form-control required" placeholder="Enter username">
-          </div>
-          <div class="form-group">
-            <label for="login_password">Password</label>
-            <input type="password" id="login_password" name="login_password" class="form-control required" placeholder="Password">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" onclick="" class="btn btn-primary">Login</button> <!-- code login here-->
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
 
 <script>
   UserService.init();
