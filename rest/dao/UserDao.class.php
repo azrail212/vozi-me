@@ -10,13 +10,15 @@ class UserDao extends BaseDao{
     parent::__construct('users');
   }
 
-  public function execute_user_query($query, $params){
-    return $this->execute_query($query, $params);
-  }
-
   public function get_user_by_username($username)
   {
-    return $this->query("SELECT * FROM users where username = :username", ['username' => $username]);
+    return $this->query_unique("SELECT * FROM users WHERE username = :username", ['username' => $username]);
+  }
+
+
+  public function get_by_email($email)
+  {
+    return $this->query_unique("SELECT * FROM users WHERE email = :email", ['email' => $email]);
   }
 }
  ?>
