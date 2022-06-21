@@ -14,10 +14,7 @@
   Flight::register('userDao', 'UserDao');
   Flight::register('driverDao', 'DriverDao');
 
-  Flight::map('error', function(Exception $ex){
-    // Handle error
-    Flight::json(['message' => $ex->getMessage()], 500);
-  });
+
 
   require_once __DIR__.'/routes/UserRoutes.php';
   require_once __DIR__.'/routes/DriverRoutes.php';

@@ -4,6 +4,55 @@
   use Firebase\JWT\Key;
 
   /**
+  * @OA\Get(path="/users", tags={"users"}, security={{"ApiKeyAuth": {}}},
+  *         summary="Return all users from the API. ",
+  *         @OA\Response( response=200, description="List of categories.")
+  * )
+  */
+   Flight::route('GET /users', function()
+   {
+     Flight::json(Flight::userDao()->get_all());
+   });
+
+ /**
+ * @OA\Get(path="/users/{id}", tags={"users"}, security={{"ApiKeyAuth": {}}},
+ *     @OA\Parameter(in="path", name="id", example=1, description="Id of user"),
+ *     @OA\Response(response="200", description="Fetch individual user")
+ * )
+ */
+   Flight::route('GET /users/@id', function($id)
+   {
+    Flight::json(Flight::userDao()->get_user_by_id($id));
+   });
+
+
+  /**
+   * add user to db
+   */
+   Flight::route('POST /users', function()
+   {
+     Flight::json(Flight::userDao()->add(Flight::request()->data->getData()));
+   });
+
+ /**
+  * delete user
+  */
+   Flight::route('DELETE /users/@id', function($id)
+   {
+     Flight::userDao()->delete($id);
+     Flight::json(["message" => "deleted"]);
+   });
+
+   /**
+    * update user by id
+    */
+   Flight::route('PUT /users/@id', function($id)
+   {
+     $data = Flight::request()->data->getData();
+     $data['id'] = $id;
+     Flight::json(Flight::userDao()->update($id, $data));
+   });
+  /**
   * @OA\Post(
   *     path="/login",
   *     description="Login to the system",
