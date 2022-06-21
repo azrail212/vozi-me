@@ -5,7 +5,7 @@
   class DriverDao extends BaseDao{
 
     public function __construct(){
-      parent::__construct('drivers');
+      parent::__construct('users');
     }
 
     public function get_driver_by_username($username)

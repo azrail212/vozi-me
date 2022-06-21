@@ -22,30 +22,89 @@
  */
    Flight::route('GET /users/@id', function($id)
    {
-    Flight::json(Flight::userDao()->get_user_by_id($id));
+    Flight::json(Flight::userDao()->get_by_id($id));
    });
 
-
-  /**
-   * add user to db
+   /**
+   * @OA\Post(
+   *     path="/users",
+   *     description="Add a user; please use register method instead to avoid duplicates!",
+   *     tags={"users"},
+   *     @OA\RequestBody(description="All user info", required=true,
+   *       @OA\MediaType(mediaType="application/json",
+   *    			@OA\Schema(
+   *    				@OA\Property(property="username", type="string", example="azra",	description="Username"),
+   *    				@OA\Property(property="email", type="string", example="azra@gmail.com",	description="Email"),
+   *    				@OA\Property(property="password", type="string", example="12345678",	description="Password" ),
+   *    				@OA\Property(property="licence_id", type="string", example="123456",	description="user licence ID"),
+   *            @OA\Property(property="driver", type="string", example="no",	description="Is driver?")
+   *        )
+   *     )),
+   *     @OA\Response(
+   *         response=200,
+   *         description="Get user listed as successful response"
+   *     ),
+   *     @OA\Response(
+   *         response=404,
+   *         description="Password too weak | User already exists"
+   *     )
+   * ),
    */
    Flight::route('POST /users', function()
    {
      Flight::json(Flight::userDao()->add(Flight::request()->data->getData()));
    });
+   Flight::route('POST /users', function()
+   {
+     Flight::json(Flight::userDao()->add(Flight::request()->data->getData()));
+   });
 
- /**
-  * delete user
-  */
+   /**
+   * @OA\Delete(
+   *     path="/users/{id}",
+   *     tags={"users"},
+   *     @OA\Parameter(in="path", name="id", example=1, description="Id of user"),
+   *     @OA\Response(
+   *         response=200,
+   *         description="Deleted"
+   *     ),
+   *     @OA\Response(
+   *         response=404,
+   *         description="User cannot be found or deleted"
+   *     )
+   * )
+   */
    Flight::route('DELETE /users/@id', function($id)
    {
      Flight::userDao()->delete($id);
      Flight::json(["message" => "deleted"]);
    });
 
-   /**
-    * update user by id
-    */
+/**
+* @OA\Put(
+*     path="/users/{id}",
+*     tags={"users"},
+*     @OA\RequestBody(description="All user info", required=true,
+*       @OA\MediaType(mediaType="application/json",
+*    			@OA\Schema(
+*    				@OA\Property(property="username", type="string", example="azra",	description="Username"),
+*    				@OA\Property(property="email", type="string", example="azra@gmail.com",	description="Email"),
+*    				@OA\Property(property="password", type="string", example="12345678",	description="Password" ),
+*    				@OA\Property(property="licence_id", type="string", example="123456",	description="User licence ID"),
+*           @OA\Property(property="driver", type="string", example="yes",	description="Is driver?")
+*        )
+*     )),
+*     @OA\Parameter(in="path", name="id", example=1, description="Id of user"),
+*     @OA\Response(
+*         response=200,
+*         description="Get user listed as successful response"
+*     ),
+*     @OA\Response(
+*         response=404,
+*         description="User cannot be found or updated | No user with such ID"
+*     )
+* )
+*/
    Flight::route('PUT /users/@id', function($id)
    {
      $data = Flight::request()->data->getData();
@@ -60,7 +119,7 @@
   *     @OA\RequestBody(description="Basic user info", required=true,
   *       @OA\MediaType(mediaType="application/json",
   *    			@OA\Schema(
-  *    				@OA\Property(property="email", type="string", example="azra",	description="Email"),
+  *    				@OA\Property(property="username", type="string", example="azra",	description="Username"),
   *    				@OA\Property(property="password", type="string", example="12345678",	description="Password" )
   *        )
   *     )),
@@ -99,8 +158,10 @@
   *       @OA\MediaType(mediaType="application/json",
   *    			@OA\Schema(
   *           @OA\Property(property="username", type="string", example="azra",	description="Username"),
-  *    				@OA\Property(property="email", type="string", example="azra@fixit.ba",	description="Email"),
-  *    				@OA\Property(property="password", type="string", example="12345678",	description="Password" )
+  *    				@OA\Property(property="email", type="string", example="azra@gmail.com",	description="Email"),
+  *    				@OA\Property(property="password", type="string", example="12345678",	description="Password" ),
+  *    				@OA\Property(property="licence_id", type="string", example="123456",	description="User licence ID"),
+  *           @OA\Property(property="driver", type="string", example="yes",	description="Is driver?")
   *        )
   *     )),
   *     @OA\Response(
