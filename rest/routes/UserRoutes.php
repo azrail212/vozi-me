@@ -181,7 +181,7 @@
 
     if (isset($existingUser['username'])){
       Flight::json(["message" => "User already exists"], 403);
-    }else if (empty($register['username']) || empty($register['password']) || empty($register['email'])  || empty($register['licence_id'])) {
+    }else if (empty($register['username']) || empty($register['password']) || empty($register['email'])) {
       Flight::json(["message" => "Make sure you filled all the fields."], 403);
     }else if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $register['username'])){
       Flight::json(["message" => "Username must not contain special characters."], 403);

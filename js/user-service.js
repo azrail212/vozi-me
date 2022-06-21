@@ -16,6 +16,12 @@ var UserService = {
         UserService.register(entity);
       }
     });
+    $('#passenger-register-form').validate({
+      submitHandler: function(form) {
+        var entity = Object.fromEntries((new FormData(form)).entries());
+        UserService.register(entity);
+      }
+    });
   },
   login: function(entity){
     $.ajax({

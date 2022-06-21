@@ -37,5 +37,5 @@ var DriverService = {
         UserService.logout();
       }
     });
-  },
+  }
 }
