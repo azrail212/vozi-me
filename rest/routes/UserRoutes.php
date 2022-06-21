@@ -29,7 +29,7 @@
       $login = Flight::request()->data->getData();
       $user = Flight::userDao()->get_user_by_username($login['username']);
       if (isset($user['id'])){
-        if($user['password'] == md5($login['password'])){
+        if($user['password'] == $login['password']){
           unset($user['password']);
           $jwt = JWT::encode($user, Config::JWT_SECRET(), 'HS256');
           Flight::json(['token' => $jwt]);
@@ -71,12 +71,10 @@
 
     if (isset($existingUser['username'])){
       Flight::json(["message" => "User already exists"], 403);
-    }else if (empty($register['username']) || empty($register['password']) || empty($register['email']) || empty($register['phone_number'])) {
+    }else if (empty($register['username']) || empty($register['password']) || empty($register['email'])  || empty($register['licence_id'])) {
       Flight::json(["message" => "Make sure you filled all the fields."], 403);
     }else if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $register['username'])){
       Flight::json(["message" => "Username must not contain special characters."], 403);
-    }else if(!preg_match("/^([a-zA-Z0-9\.]+@+[a-zA-Z]+(\.)+[a-zA-Z]{2,3})$/", $register['email'])){
-      Flight::json(["message" => "Email is invalid."], 403);
     }else if (strlen($register['password'])<8) {
       Flight::json(["message" => "Password must be longer than 8 characters"], 403);
     }else if (strlen($register['username'])<3){
