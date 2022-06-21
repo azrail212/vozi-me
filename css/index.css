@@ -1,0 +1,12 @@
+.vozime-container{
+  padding-top: 10vh;
+}
+.nounderline {
+  text-decoration: none !important
+}
+.bg-yellow{
+    background-color: #ffa500;
+}
+.padded-top{
+  padding-top: 5vh;
+}

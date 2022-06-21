@@ -19,93 +19,116 @@
 </head>
 
 <body>
-  <header class="p-3" style="background-color: yellow;">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-            <use xlink:href="#bootstrap" />
-          </svg>
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">VoziMe! Is an idea of an application whose primary audience would
+              be young people who use smartphones in their everyday lives, as well as all those who can navigate through a simple
+              application. The goal is to make taxis as accessible as possible, so that we do not have to call several phone numbers
+              to get a vehicle to pick us up. Feel free to login on the left and then ... <b>Enjoy!</b></p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://github.com/azrail212/VoziMe" class="text-white">Follow our GitHub</a></li>
+              <li><a href="mailto:azra.becirovic@stu.ibu.edu.ba" class="text-white">Email Azra</a></li>
+              <li><a href="mailto:faris.mulaosmanovic@stu.ibu.edu.ba" class="text-white">Email Faris</a></li>
+              <button style="margin-top:10px;" type="button" class="btn btn-outline-light me-2" onclick="UserService.logout();">Logout</button>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+      <div class="container d-flex justify-content-between">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+          <img src="assets/logo_for_black.png" width="100%" height="80" class="mr-2"></img>
         </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-black">Drivers</a></li>
-          <li><a href="#" class="nav-link px-2 text-black">Profile</a></li>
-          <li><a href="#" class="nav-link px-2 text-black">About</a></li>
-        </ul>
-
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-dark me-2" onclick="UserService.logout()">Log out</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main>
+  <main role="main">
 
-    <section class="containter-fluid cover-background py-5 text-center bg-image" data-background="assets/hero-bg.jpg" style="background: url('assets/hero-bg.jpg') no-repeat fixed center; height: 500px; background-size:cover; box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.61);">
+    <section class="containter-fluid cover-background py-5 text-center bg-image" data-background="assets/hero-bg.jpg"
+      style="background: url('assets/hero-bg.jpg') no-repeat fixed center; height: 250px; background-size:cover; box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.61);">
       <div class="row py-lg-5 align-items-center">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light" style="color:#ffffff;">VoziMe Taxi App</h1>
-          <p class="lead" style="color:#F7F7F7;">Welcome to the frontpage! </p>
-          <p>
-            <a href="#" class="btn btn-primary my-2 btn-lg" href="signup.html">Sign up</a>
-            <a href="#" class="btn btn-primary my-2 btn-lg" href="login.html">Log in</a>
-          </p>
+        <div class="container vozime-container">
+          <h1 class="jumbotron-heading text-light">Welcome to your frontpage</h1>
+          <p class="lead text-light">You can check the available drivers by clicking on the appropriate link below. If you wish to edit your profile or see your ride history, those links are available too.</p>
         </div>
       </div>
     </section>
+    <div class="py-5 bg-light">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-4">
+            <a href="html/available-drivers.html" class="nounderline">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="assets/drivers-thumb.jpg" alt="An image portraying a car on a road">
+                <div class="card-body">
+                  <p class="text-center fs-4 text">List of available drivers</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4">
+            <a href="html/passanger-drive-history.html" class="nounderline">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="assets/history-thumb.jpg" alt="An image portrayxing cars on highway">
+                <div class="card-body">
+                  <p class="text-center fs-4 text">My ride history</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4">
+            <a href="html/my-profile.html" class="nounderline">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="assets/profile-thumb.jpg" alt="An image portraying gears">
+                <div class="card-body">
+                  <p class="text-center fs-4 text">Edit profile</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </main>
+  <footer class="text-muted fixed-bottom">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+  </footer>
 </body>
 
 <script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="js/user-service.js"></script>
-
-<!-- Update Profile Modal -->
-<div class="modal fade" id="updateProfileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form id="updateProfileForm">
-        <div class="modal-header">
-          <h5 class="modal-title" id="updateProfileModalLabel">Update my profile</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <input id="id" type="hidden" />
-            <label for="inputName">Name</label>
-            <input id="update_name" type="text" class="form-control required" placeholder="Enter name">
-          </div>
-          <div class="form-group">
-            <label for="inputDescription">Description</label>
-            <textarea id="update_description" class="form-control required" placeholder="Category description" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="choose_dob">Date of birth</label>
-            <select id="update_dob" class="form-control required">
-              <option disabled selected value> -- select an option -- </option>
-              <option disabled selected value> Datepicker to be added....</option>
-            </select>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard changes</button>
-          <button type="submit" class="btn btn-primary save-category-change-button" onclick="UserService.update()">Save changes</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <script>
   var token = localStorage.getItem("token");
   if (token) {
-  //do sth
+    //do sth
   } else {
-  window.location.replace("login.html");
+    window.location.replace("login.html");
   }
 </script>
 
