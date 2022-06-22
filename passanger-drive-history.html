@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="http://localhost/vozime/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="http://localhost/vozime/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="http://localhost/vozime/assets/favicon-16x16.png">
+  <link rel="manifest" href="http://localhost/vozime/assets/site.webmanifest">
+  <title>VoziMe App</title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">VoziMe! Is an idea of an application whose primary audience would
+              be young people who use smartphones in their everyday lives, as well as all those who can navigate through a simple
+              application. The goal is to make taxis as accessible as possible, so that we do not have to call several phone numbers
+              to get a vehicle to pick us up. <b>Enjoy!</b></p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://github.com/azrail212/VoziMe" class="text-white">Follow our GitHub</a></li>
+              <li><a href="mailto:azra.becirovic@stu.ibu.edu.ba" class="text-white">Email Azra</a></li>
+              <li><a href="mailto:faris.mulaosmanovic@stu.ibu.edu.ba" class="text-white">Email Faris</a></li>
+              <button type="button" class="logout-button btn btn-outline-light me-2" onclick="UserService.logout();">Logout</button>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+      <div class="container d-flex justify-content-between">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+          <img src="assets/logo_for_black.png" width="100%" height="80" class="mr-2"></img>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>
+
+  </header>
+  <main>
+    <div class="container vozime-container">
+      <div class="list-group w-auto">
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+          <img src="assets/profile-picture.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-0">Driver name 1</h6>
+              <p class="mb-0 opacity-75">Price: 20KM</p>
+            </div>
+            <small class="opacity-50 text-nowrap">now</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+          <img src="assets/profile-picture.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-0">Driver name 2</h6>
+              <p class="mb-0 opacity-75">Price: 30KM</p>
+            </div>
+            <small class="opacity-50 text-nowrap">01.06.2022.</small>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+          <img src="assets/profile-picture.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-0">Driver name 3</h6>
+              <p class="mb-0 opacity-75">Price: 10KM</p>
+            </div>
+            <small class="opacity-50 text-nowrap">01.01.2022.</small>
+          </div>
+        </a>
+        <div class="container">
+          <p class="float-right">
+            <a href="#">More...</a>
+          </p>
+        </div>
+        <div class="padded-top container">
+            <div class="row">
+                <div class="text-center">
+                  <button type="button" class="logout-button btn btn-outline-danger btn-lg btn-block" onclick="window.location.replace('index.html')">Back to dashboard</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="text-muted fixed-bottom">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>
