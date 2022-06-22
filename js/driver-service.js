@@ -23,9 +23,8 @@ var DriverService = {
               <div>
                 <h6 class="mb-0">Driver name: ` + data[i].username + `</h6>
                 <h6 class="mb-0">Licence ID: ` + data[i].licence_id + `</h6>
-                <p class="mb-0 opacity-75">Price: 20KM</p>
               </div>
-              <button type="button" class="btn btn-primary edit-category-button" onclick="#">Order ride</button>
+              <button type="button" class="btn btn-primary edit-category-button" onclick="modal">Order ride</button>
 
             </div>
           </a>`;
