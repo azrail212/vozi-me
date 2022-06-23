@@ -11,7 +11,7 @@
   */
    Flight::route('GET /users', function()
    {
-     Flight::json(Flight::userDao()->get_all());
+     Flight::json(Flight::userService()->get_all());
    });
 
  /**
@@ -22,7 +22,7 @@
  */
    Flight::route('GET /users/@id', function($id)
    {
-    Flight::json(Flight::userDao()->get_by_id($id));
+    Flight::json(Flight::userService()->get_by_id($id));
    });
 
    /**
@@ -52,7 +52,7 @@
    */
    Flight::route('POST /users', function()
    {
-     Flight::json(Flight::userDao()->add(Flight::request()->data->getData()));
+     Flight::json(Flight::userService()->add(Flight::request()->data->getData()));
    });
 
    /**
@@ -72,7 +72,7 @@
    */
    Flight::route('DELETE /users/@id', function($id)
    {
-     Flight::userDao()->delete($id);
+     Flight::userService()->delete($id);
      Flight::json(["message" => "deleted"]);
    });
 
@@ -105,7 +105,7 @@
    {
      $data = Flight::request()->data->getData();
      $data['id'] = $id;
-     Flight::json(Flight::userDao()->update($id, $data));
+     Flight::json(Flight::userService()->update($id, $data));
    });
   /**
   * @OA\Post(
@@ -131,7 +131,7 @@
   */
   Flight::route('POST /login', function(){
       $login = Flight::request()->data->getData();
-      $user = Flight::userDao()->get_user_by_username($login['username']);
+      $user = Flight::userService()->get_user_by_username($login['username']);
       if (isset($user['id'])){
         if($user['password'] == $login['password']){
           unset($user['password']);
@@ -173,7 +173,7 @@
   Flight::route('POST /register', function()
   {
     $register = Flight::request()->data->getData();
-    $existingUser = Flight::userDao()->get_user_by_username($register['username']);
+    $existingUser = Flight::userService()->get_user_by_username($register['username']);
 
     if (isset($existingUser['username'])){
       Flight::json(["message" => "User already exists"], 403);
@@ -186,7 +186,7 @@
     }else if (strlen($register['username'])<3){
       Flight::json(["message" => "Username too short."], 403);
     }else{
-      Flight::json(Flight::userDao()->add(Flight::request()->data->getData()));
+      Flight::json(Flight::userService()->add(Flight::request()->data->getData()));
     }
   });
 

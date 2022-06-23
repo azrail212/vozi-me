@@ -8,7 +8,7 @@
  */
   Flight::route('GET /drivers', function()
   {
-    Flight::json(Flight::driverDao()->get_all_drivers());
+    Flight::json(Flight::driverService()->get_all_drivers());
   });
 
 /**
@@ -23,7 +23,7 @@
 */
   Flight::route('GET /drivers/@id', function($id)
   {
-   Flight::json(Flight::driverDao()->get_driver_by_id($id));
+   Flight::json(Flight::driverService()->get_driver_by_id($id));
   });
 
  ?>

@@ -24,7 +24,7 @@
   */
   Flight::route('POST /ridepayments', function()
   {
-    Flight::json(Flight::paymentDao()->add(Flight::request()->data->getData()));
+    Flight::json(Flight::paymentService()->add(Flight::request()->data->getData()));
   });
 
 

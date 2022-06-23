@@ -13,7 +13,6 @@
       return $this->query_unique("SELECT * FROM users WHERE username = :username", ['username' => $username]);
     }
 
-
     public function get_by_email($email)
     {
       return $this->query_unique("SELECT * FROM users WHERE email = :email", ['email' => $email]);

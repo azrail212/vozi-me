@@ -37,7 +37,7 @@ var RideService = {
               </div>
             </div>
         </div>`);
-        RideService.get_ride_id();
+        RideService.set_ride_id();
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         toastr.error(XMLHttpRequest.responseJSON.message);
@@ -45,7 +45,7 @@ var RideService = {
     });
   },
 
-  get_ride_id:function(){
+  set_ride_id:function(){
     $.ajax({
       url: 'rest/lastrideid',
       type: 'GET',
