@@ -24,7 +24,7 @@ var DriverService = {
                 <h6 class="mb-0">Driver name: ` + data[i].username + `</h6>
                 <h6 class="mb-0">Licence ID: ` + data[i].licence_id + `</h6>
               </div>
-              <button type="button" class="btn btn-primary edit-category-button" onclick="modal">Order ride</button>
+              <button type="button" class="btn btn-primary edit-category-button" onclick="DriverService.toggle_order_ride_modal();">Order ride</button>
 
             </div>
           </a>`;
@@ -36,5 +36,9 @@ var DriverService = {
         UserService.logout();
       }
     });
-  }
+  },
+
+  toggle_order_ride_modal: function() {
+      $("#order-ride-modal").modal("toggle");
+  },
 }
