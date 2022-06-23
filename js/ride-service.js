@@ -33,7 +33,7 @@ var RideService = {
                   <h4 class="mb-0">Ride completed.</h6>
                   <h4 class="mb-5">Total price:<b>20 KM</b></h6>
                   <button type="button" class="btn btn-outline-danger btn-lg btn-block" onclick="RideService.process_ride_payment()">Finalize and pay</button>
-                  <button type="button" class="btn btn-outline-danger btn-lg btn-block" onclick="window.location.replace('leave-review.html')">Leave a review</button>
+                  <button type="button" class="btn btn-outline-danger btn-lg btn-block" onclick="window.location.replace('leave-review.html')">Leave a review (placeholder!)</button>
               </div>
             </div>
         </div>`);
