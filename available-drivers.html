@@ -12,6 +12,18 @@
   <link rel="icon" type="image/png" sizes="32x32" href="http://localhost/vozime/assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="http://localhost/vozime/assets/favicon-16x16.png">
   <link rel="manifest" href="assets/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="css/map-style.css" />
+  <script type="module" src="js/map.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <!-- playground-hide -->
+  <script>
+    const process = {
+      env: {}
+    };
+    process.env.GOOGLE_MAPS_API_KEY =
+      "AIzaSyB2ASFGrkeQadxBuWyCLv5ZkbkZZttpr7A";
+  </script>
+  <!-- playground-hide-end -->
   <title>VoziMe App</title>
 </head>
 
@@ -19,7 +31,7 @@
 
   <header>
     <div class="collapse bg-dark" id="navbarHeader">
-      <div class="container">
+      <div class="vozime-container container">
         <div class="row">
           <div class="col-sm-8 col-md-7 py-4">
             <h4 class="text-white">About</h4>
@@ -54,7 +66,17 @@
   </header>
 
   <main>
+
+
+    <!--
+     The `defer` attribute causes the callback to execute after the full HTML
+     document has been parsed. For non-blocking uses, avoiding race conditions,
+     and consistent behavior across browsers, consider loading using Promises
+     with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2ASFGrkeQadxBuWyCLv5ZkbkZZttpr7A&callback=initMap&v=weekly" defer></script>
     <div class="container vozime-container">
+        <div id="mapa"></div>
       <div id="driver-list" class="list-group w-auto">
       </div>
       <button type="button" class="logout-button btn btn-outline-danger btn-lg btn-block" onclick="window.location.replace('index.html')">Back to dashboard</button>
