@@ -19,6 +19,10 @@
   Flight::register('rideService', 'RideService');
   Flight::register('paymentService', 'PaymentService');
 
+  Flight::map('error', function(Exception $ex){
+      // Handle error
+      Flight::json(['message' => $ex->getMessage()], 500);
+  });
 
 
   require_once __DIR__.'/routes/UserRoutes.php';

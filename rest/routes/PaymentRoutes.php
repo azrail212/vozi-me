@@ -8,8 +8,7 @@
   *     @OA\RequestBody(description="All ride payment info", required=true,
   *       @OA\MediaType(mediaType="application/json",
   *    			@OA\Schema(
-  *           @OA\Property(property="driver_name", type="string", example="azraDriver",	description="Driver name"),
-  *    				@OA\Property(property="passenger_name", type="string", example="azra",	description="Passenger name"),
+  *           @OA\Property(property="ride_id", type="int", example="1",	description="Id of ride recorded")
   *        )
   *     )),
   *     @OA\Response(

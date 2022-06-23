@@ -30,7 +30,7 @@
   * @OA\Post(
   *     path="/rides",
   *     description="Add a ride",
-  *     tags={"users"},
+  *     tags={"rides"},
   *     @OA\RequestBody(description="All ride info", required=true,
   *       @OA\MediaType(mediaType="application/json",
   *    			@OA\Schema(
@@ -58,13 +58,13 @@
   });
 
   /**
-  * @OA\Get(path="/lastrideid", tags={"last id inserted of ride"}, security={{"ApiKeyAuth": {}}},
+  * @OA\Get(path="/lastrideid", tags={"rides"}, security={{"ApiKeyAuth": {}}},
   *         summary="Return the last inserted ride id ",
   *         @OA\Response( response=200, description="Last inserted id")
   * )
   */
   Flight::route('GET /lastrideid', function()
   {
-    Flight::json(Flight::rideService()->get_last_id()); 
+    Flight::json(Flight::rideService()->get_last_id());
   });
  ?>

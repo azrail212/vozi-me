@@ -69,7 +69,8 @@ var RideService = {
       contentType: "application/json",
       dataType: "json",
       success: function(result) {
-        toastr.success("all good");
+        toastr.success("Sucessfully paid");
+        window.location.replace("index.html");
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         toastr.error(XMLHttpRequest.responseJSON.message);
