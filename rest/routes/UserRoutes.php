@@ -54,10 +54,6 @@
    {
      Flight::json(Flight::userDao()->add(Flight::request()->data->getData()));
    });
-   Flight::route('POST /users', function()
-   {
-     Flight::json(Flight::userDao()->add(Flight::request()->data->getData()));
-   });
 
    /**
    * @OA\Delete(

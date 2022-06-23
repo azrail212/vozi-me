@@ -70,6 +70,8 @@
     <div class="container vozime-container">
       <div id="driver-list" class="list-group w-auto">
       </div>
+      <div id="confirm-ride" class="list-group w-auto">
+      </div>
       <button type="button" class="logout-button btn btn-outline-danger btn-lg btn-block" onclick="window.location.replace('index.html')">Back to dashboard</button>
     </div>
   </main>
@@ -117,6 +119,12 @@
               <div class="form-group mb-3">
                 <label for="arrival_time_requested">When do you need a driver?</label>
                 <input type="time" class="form-control" name="arrival_time_requested">
+                <input type="hidden" class="form-control" id="driver_name" name="driver_name" value="">
+                <input type="hidden" id="current_username" class="form-control" name="passenger_name" value="">
+              </div>
+              <div class="form-group mb-3">
+                <label for="destination_address">What is your requested destination?</label>
+                <input type="text" class="form-control" name="destination_address">
               </div>
               <button type="submit" class="btn btn-primary">Order ride</button>
             </form>
@@ -126,18 +134,19 @@
     </div>
   </div>
 
-
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/driver-service.js"></script>
-  <script src="js/jquery.validate.min.js"></script>
-  <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/user-service.js"></script>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="js/driver-service.js"></script>
   <script>
     var token = localStorage.getItem("token");
     if (token) {
       DriverService.init();
+      UserService.validate_order_ride();
     } else {
       window.location.replace("login.html");
     }

@@ -21,7 +21,7 @@ var DriverService = {
             <img src="assets/profile-picture.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
             <div class="d-flex gap-2 w-100 justify-content-between">
               <div>
-                <h6 class="mb-0">Driver name: ` + data[i].username + `</h6>
+                <h6 id="driver_username" class="mb-0">Driver name: ` + data[i].username + `</h6>
                 <h6 class="mb-0">Licence ID: ` + data[i].licence_id + `</h6>
               </div>
               <button type="button" class="btn btn-primary edit-category-button" onclick="DriverService.toggle_order_ride_modal();">Order ride</button>

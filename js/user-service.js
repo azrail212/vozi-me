@@ -23,6 +23,18 @@ var UserService = {
       }
     });
   },
+
+  validate_order_ride: function(){
+    $('#order-ride-form').validate({
+      submitHandler: function(form) {
+        $("#current_username").val(localStorage.getItem("username"));
+        $("#driver_name").val("Driver username"); //need to get the actual username using DOM manipulation
+        var entity = Object.fromEntries((new FormData(form)).entries());
+        UserService.order_ride(entity);
+      }
+    });
+  },
+
   login: function(entity){
     $.ajax({
       url: 'rest/login',
@@ -33,6 +45,7 @@ var UserService = {
       success: function(result) {
         console.log(result);
         localStorage.setItem("token", result.token);
+        localStorage.setItem("username", entity.username); //to be used for ordering rides
         window.location.replace("index.html");
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -64,4 +77,21 @@ var UserService = {
     localStorage.clear();
     window.location.replace("login.html");
   },
+
+  order_ride: function(entity){
+    $.ajax({
+      url: 'rest/rides',
+      type: 'POST',
+      data: JSON.stringify(entity),
+      contentType: "application/json",
+      dataType: "json",
+      success: function(result) {
+        DriverService.toggle_order_ride_modal();
+        $("#driver-list").html("<h3>Ride ordered</h3>");
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+      }
+    });
+  }
 }
