@@ -40,6 +40,10 @@ body {
   background-color: #eee;
 }
 
+.car-img {
+  max-width: 100%;
+}
+
 .error {
   color: red;
 }
