@@ -25,16 +25,16 @@
     Flight::json(Flight::userService()->get_by_id($id));
    });
 
-   /**
-   * @OA\Get(path="/users/{username}", tags={"users"}, security={{"ApiKeyAuth": {}}},
-   *     @OA\Parameter(in="path", name="username", example=1, description="Username of user"),
-   *     @OA\Response(response="200", description="Fetch individual user")
-   * )
-   */
-     Flight::route('GET /@username', function($username)
-     {
-      Flight::json(Flight::userService()->get_user_by_username($username));
-     });
+  /**
+  * @OA\Get(path="/user/{user_name}", tags={"users"}, security={{"ApiKeyAuth": {}}},
+  *     @OA\Parameter(in="path", name="user_name", example="azra", description="Username of user"),
+  *     @OA\Response(response="200", description="Fetch individual user by username")
+  * )
+  */
+   Flight::route('GET /user/@user_name', function($user_name)
+   {
+    Flight::json(Flight::userService()->get_user_by_username($user_name));
+   });
 
    /**
    * @OA\Post(

@@ -78,7 +78,7 @@ var UserService = {
 
   set_user_id:function(){
     $.ajax({
-      url: 'rest/' + localStorage.getItem("username"),
+      url: 'rest/user/' + localStorage.getItem("username"),
       type: 'GET',
       success: function(data) {
         localStorage.setItem("user_id", data.id);
@@ -98,7 +98,7 @@ var UserService = {
       user.email=new_email;
     }
 
-    if (new_password>=8){
+    if (new_password.length>=8){
       user.password=new_password;
     }
 
