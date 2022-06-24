@@ -56,22 +56,13 @@
   <main>
     <div class="container rounded bg-white mt-5 mb-5">
       <div class="content">
-        <h5> Welcome to your profile page. You may edit some of your information here.</h5>
+        <h5> Welcome to your profile page. You may edit some of your information here. </h5>
         <form id="edit-profile-form" class="mx-1 mx-md-4">
-
-          <div class="form-outline flex-fill mb-1">
-            <input type="text" id="username" class="form-control" placeholder="New username">
-          </div>
-
           <div class="form-outline flex-fill mb-1">
             <input type="email" id="email" class="form-control" placeholder="New email">
           </div>
           <div class="form-outline flex-fill mb-1">
-            <input type="password" id="new_password" class="form-control" placeholder="New password">
-          </div>
-
-          <div class="form-outline flex-fill mb-1">
-            <input type="password" id="old_password" class="form-control" placeholder="Old password">
+            <input type="password" id="password" class="form-control" placeholder="New password">
           </div>
 
         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -80,6 +71,7 @@
         </div>
       </form>
       <button class="btn btn-outline-dark me-2" onclick="window.location.replace('index.html')">Discard changes</button>
+      <button class="btn btn-danger me-2" data-toggle="modal" data-target="#delete_account_modal">Delete account</button>
     </div>
   </div>
   </main>
@@ -92,11 +84,38 @@
     </div>
   </footer>
 
+  <div class="modal fade" id="delete_account_modal" tabindex="-1" role="dialog" aria-labelledby="delete_account_modal_label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete your account?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger" onclick="UserService.delete()">Yes, delete my account</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   <script src="js/user-service.js"></script>
-
+  <script>
+    var token = localStorage.getItem("token");
+    if (token) {
+      UserService.validate_update();
+      UserService.set_user_id();
+    } else {
+      window.location.replace("login.html");
+    }
+  </script>
 </body>
 
 </html>

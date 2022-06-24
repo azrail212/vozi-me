@@ -26,6 +26,17 @@
    });
 
    /**
+   * @OA\Get(path="/users/{username}", tags={"users"}, security={{"ApiKeyAuth": {}}},
+   *     @OA\Parameter(in="path", name="username", example=1, description="Username of user"),
+   *     @OA\Response(response="200", description="Fetch individual user")
+   * )
+   */
+     Flight::route('GET /@username', function($username)
+     {
+      Flight::json(Flight::userService()->get_user_by_username($username));
+     });
+
+   /**
    * @OA\Post(
    *     path="/users",
    *     description="Add a user; please use register method instead to avoid duplicates!",
@@ -107,6 +118,7 @@
      $data['id'] = $id;
      Flight::json(Flight::userService()->update($id, $data));
    });
+
   /**
   * @OA\Post(
   *     path="/login",
