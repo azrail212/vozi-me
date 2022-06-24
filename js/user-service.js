@@ -1,7 +1,7 @@
 var UserService = {
-  init: function(){
+  init: function() {
     var token = localStorage.getItem("token");
-    if (token){
+    if (token) {
       window.location.replace("index.html");
     }
     $('#login-form').validate({
@@ -24,7 +24,7 @@ var UserService = {
     });
   },
 
-  validate_update: function(){
+  validate_update: function() {
     $('#edit-profile-form').validate({
       submitHandler: function(form) {
         var entity = Object.fromEntries((new FormData(form)).entries());
@@ -33,7 +33,7 @@ var UserService = {
     });
   },
 
-  login: function(entity){
+  login: function(entity) {
     $.ajax({
       url: 'rest/login',
       type: 'POST',
@@ -52,7 +52,7 @@ var UserService = {
     });
   },
 
-  register: function(entity){
+  register: function(entity) {
     $.ajax({
       url: 'rest/register',
       type: 'POST',
@@ -71,12 +71,12 @@ var UserService = {
     });
   },
 
-  logout: function(){
+  logout: function() {
     localStorage.clear();
     window.location.replace("login.html");
   },
 
-  set_user_id:function(){
+  set_user_id: function() {
     $.ajax({
       url: 'rest/user/' + localStorage.getItem("username"),
       type: 'GET',
@@ -94,12 +94,12 @@ var UserService = {
     var new_email = $('#email').val();
     var new_password = $('#password').val();
 
-    if (new_email){
-      user.email=new_email;
+    if (new_email) {
+      user.email = new_email;
     }
 
-    if (new_password.length>=8){
-      user.password=new_password;
+    if (new_password.length >= 8) {
+      user.password = new_password;
     }
 
     $.ajax({
@@ -115,7 +115,7 @@ var UserService = {
         toastr.success("Changes saved. Use your new credentials next time you login");
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
-          toastr.error(XMLHttpRequest.responseJSON.message);
+        toastr.error(XMLHttpRequest.responseJSON.message);
       }
     });
   },

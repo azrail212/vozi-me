@@ -1,4 +1,5 @@
 <?php
+
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
@@ -22,7 +23,7 @@
   Flight::register('paymentService', 'PaymentService');
   Flight::register('reviewService', 'ReviewService');
 
-  Flight::map('error', function(Exception $ex){
+  Flight::map('error', function (Exception $ex) {
       // Handle error
       Flight::json(['message' => $ex->getMessage()], 500);
   });
@@ -38,13 +39,11 @@
 
 
   /* REST API documentation endpoint */
-  Flight::route('GET /docs.json', function(){
-    $openapi = \OpenApi\scan('routes');
-    header('Content-Type: application/json');
-    echo $openapi->toJson();
+  Flight::route('GET /docs.json', function () {
+      $openapi = \OpenApi\scan('routes');
+      header('Content-Type: application/json');
+      echo $openapi->toJson();
   });
 
 
   Flight::start(); // start flight framework
-
-?>

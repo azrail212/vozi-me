@@ -1,12 +1,14 @@
 var RideService = {
-  init: function(){
+  //init is to make sure user is logged in, it can be called from a html page
+  init: function() {
     var token = localStorage.getItem("token");
-    if (token){
+    if (token) {
       window.location.replace("index.html");
     }
   },
 
-  validate_order_ride: function(){
+  //order ride form validation, called in order-ride.html
+  validate_order_ride: function() {
     $('#order-ride-form').validate({
       submitHandler: function(form) {
         $("#current_username").val(localStorage.getItem("username"));
@@ -17,7 +19,8 @@ var RideService = {
     });
   },
 
-  order_ride: function(entity){
+  //display payment options after ride has been paid for
+  order_ride: function(entity) {
     $.ajax({
       url: 'rest/rides',
       type: 'POST',
@@ -45,7 +48,8 @@ var RideService = {
     });
   },
 
-  set_ride_id:function(){
+  //set ride id for payment as the last recorded ride id
+  set_ride_id: function() {
     $.ajax({
       url: 'rest/lastrideid',
       type: 'GET',
@@ -58,8 +62,9 @@ var RideService = {
     });
   },
 
-  process_ride_payment: function(){
-    var payment= {
+  //add payment record
+  process_ride_payment: function() {
+    var payment = {
       ride_id: localStorage.getItem("ride_id")
     }
     $.ajax({

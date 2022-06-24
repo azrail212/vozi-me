@@ -1,7 +1,7 @@
 var DriverService = {
   init: function() {
     var token = localStorage.getItem("token");
-    if (token){
+    if (token) {
       DriverService.list();
     }
   },
@@ -10,7 +10,7 @@ var DriverService = {
       url: "rest/drivers",
       type: "GET",
       //beforeSend: function(xhr) {
-        //xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      //xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
       //},
       success: function(data) {
         $("#driver-list").html("");
@@ -39,6 +39,6 @@ var DriverService = {
   },
 
   toggle_order_ride_modal: function() {
-      $("#order-ride-modal").modal("toggle");
+    $("#order-ride-modal").modal("toggle");
   },
 }

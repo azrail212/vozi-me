@@ -6,9 +6,8 @@
  *         @OA\Response( response=200, description="List of all drivers.")
  * )
  */
-  Flight::route('GET /drivers', function()
-  {
-    Flight::json(Flight::driverService()->get_all_drivers());
+  Flight::route('GET /drivers', function () {
+      Flight::json(Flight::driverService()->get_all_drivers());
   });
 
 /**
@@ -21,9 +20,6 @@
 *     )
 * )
 */
-  Flight::route('GET /drivers/@id', function($id)
-  {
-   Flight::json(Flight::driverService()->get_driver_by_id($id));
+  Flight::route('GET /drivers/@id', function ($id) {
+      Flight::json(Flight::driverService()->get_driver_by_id($id));
   });
-
- ?>

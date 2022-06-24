@@ -6,9 +6,8 @@
  *         @OA\Response( response=200, description="List of all reviews.")
  * )
  */
-  Flight::route('GET /reviews', function()
-  {
-    Flight::json(Flight::reviewService()->get_all());
+  Flight::route('GET /reviews', function () {
+      Flight::json(Flight::reviewService()->get_all());
   });
 
 /**
@@ -21,9 +20,8 @@
 *     )
 * )
 */
-  Flight::route('GET /reviews/@id', function($id)
-  {
-   Flight::json(Flight::reviewService()->get_by_id($id));
+  Flight::route('GET /reviews/@id', function ($id) {
+      Flight::json(Flight::reviewService()->get_by_id($id));
   });
 
   /**
@@ -50,9 +48,8 @@
   *     )
   * )
   */
-  Flight::route('POST /reviews', function()
-  {
-    Flight::json(Flight::reviewService()->add(Flight::request()->data->getData()));
+  Flight::route('POST /reviews', function () {
+      Flight::json(Flight::reviewService()->add(Flight::request()->data->getData()));
   });
 
   /**
@@ -70,10 +67,9 @@
   *     )
   * )
   */
-  Flight::route('DELETE /reviews/@id', function($id)
-  {
-    Flight::reviewService()->delete($id);
-    Flight::json(["message" => "deleted"]);
+  Flight::route('DELETE /reviews/@id', function ($id) {
+      Flight::reviewService()->delete($id);
+      Flight::json(["message" => "deleted"]);
   });
 
 /**
@@ -100,11 +96,8 @@
 *     )
 * )
 */
-  Flight::route('PUT /reviews/@id', function($id)
-  {
-    $data = Flight::request()->data->getData();
-    $data['id'] = $id;
-    Flight::json(Flight::reviewService()->update($id, $data));
+  Flight::route('PUT /reviews/@id', function ($id) {
+      $data = Flight::request()->data->getData();
+      $data['id'] = $id;
+      Flight::json(Flight::reviewService()->update($id, $data));
   });
-
- ?>

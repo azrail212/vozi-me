@@ -21,10 +21,6 @@
   *     )
   * ),
   */
-  Flight::route('POST /ridepayments', function()
-  {
-    Flight::json(Flight::paymentService()->add(Flight::request()->data->getData()));
+  Flight::route('POST /ridepayments', function () {
+      Flight::json(Flight::paymentService()->add(Flight::request()->data->getData()));
   });
-
-
- ?>

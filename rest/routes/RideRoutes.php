@@ -6,9 +6,8 @@
  *         @OA\Response( response=200, description="List of all rides.")
  * )
  */
-  Flight::route('GET /rides', function()
-  {
-    Flight::json(Flight::rideService()->get_all());
+  Flight::route('GET /rides', function () {
+      Flight::json(Flight::rideService()->get_all());
   });
 
 /**
@@ -21,9 +20,8 @@
 *     )
 * )
 */
-  Flight::route('GET /rides/@id', function($id)
-  {
-   Flight::json(Flight::rideService()->get_by_id($id));
+  Flight::route('GET /rides/@id', function ($id) {
+      Flight::json(Flight::rideService()->get_by_id($id));
   });
 
   /**
@@ -52,9 +50,8 @@
   *     )
   * ),
   */
-  Flight::route('POST /rides', function()
-  {
-    Flight::json(Flight::rideService()->add(Flight::request()->data->getData()));
+  Flight::route('POST /rides', function () {
+      Flight::json(Flight::rideService()->add(Flight::request()->data->getData()));
   });
 
   /**
@@ -63,8 +60,6 @@
   *         @OA\Response( response=200, description="Last inserted id")
   * )
   */
-  Flight::route('GET /lastrideid', function()
-  {
-    Flight::json(Flight::rideService()->get_last_id());
+  Flight::route('GET /lastrideid', function () {
+      Flight::json(Flight::rideService()->get_last_id());
   });
- ?>

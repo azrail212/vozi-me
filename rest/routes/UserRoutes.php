@@ -9,9 +9,8 @@
   *         @OA\Response( response=200, description="List of categories.")
   * )
   */
-   Flight::route('GET /users', function()
-   {
-     Flight::json(Flight::userService()->get_all());
+   Flight::route('GET /users', function () {
+       Flight::json(Flight::userService()->get_all());
    });
 
  /**
@@ -20,9 +19,8 @@
  *     @OA\Response(response="200", description="Fetch individual user")
  * )
  */
-   Flight::route('GET /users/@id', function($id)
-   {
-    Flight::json(Flight::userService()->get_by_id($id));
+   Flight::route('GET /users/@id', function ($id) {
+       Flight::json(Flight::userService()->get_by_id($id));
    });
 
   /**
@@ -31,9 +29,8 @@
   *     @OA\Response(response="200", description="Fetch individual user by username")
   * )
   */
-   Flight::route('GET /user/@user_name', function($user_name)
-   {
-    Flight::json(Flight::userService()->get_user_by_username($user_name));
+   Flight::route('GET /user/@user_name', function ($user_name) {
+       Flight::json(Flight::userService()->get_user_by_username($user_name));
    });
 
    /**
@@ -61,9 +58,8 @@
    *     )
    * ),
    */
-   Flight::route('POST /users', function()
-   {
-     Flight::json(Flight::userService()->add(Flight::request()->data->getData()));
+   Flight::route('POST /users', function () {
+       Flight::json(Flight::userService()->add(Flight::request()->data->getData()));
    });
 
    /**
@@ -81,10 +77,9 @@
    *     )
    * )
    */
-   Flight::route('DELETE /users/@id', function($id)
-   {
-     Flight::userService()->delete($id);
-     Flight::json(["message" => "deleted"]);
+   Flight::route('DELETE /users/@id', function ($id) {
+       Flight::userService()->delete($id);
+       Flight::json(["message" => "deleted"]);
    });
 
 /**
@@ -112,11 +107,10 @@
 *     )
 * )
 */
-   Flight::route('PUT /users/@id', function($id)
-   {
-     $data = Flight::request()->data->getData();
-     $data['id'] = $id;
-     Flight::json(Flight::userService()->update($id, $data));
+   Flight::route('PUT /users/@id', function ($id) {
+       $data = Flight::request()->data->getData();
+       $data['id'] = $id;
+       Flight::json(Flight::userService()->update($id, $data));
    });
 
   /**
@@ -141,19 +135,19 @@
   *     )
   * )
   */
-  Flight::route('POST /login', function(){
+  Flight::route('POST /login', function () {
       $login = Flight::request()->data->getData();
       $user = Flight::userService()->get_user_by_username($login['username']);
-      if (isset($user['id'])){
-        if($user['password'] == $login['password']){
-          unset($user['password']);
-          $jwt = JWT::encode($user, Config::JWT_SECRET(), 'HS256');
-          Flight::json(['token' => $jwt]);
-        }else{
-          Flight::json(["message" => "Wrong password"], 404);
-        }
-      }else{
-        Flight::json(["message" => "User doesn't exist"], 404);
+      if (isset($user['id'])) {
+          if ($user['password'] == $login['password']) {
+              unset($user['password']);
+              $jwt = JWT::encode($user, Config::JWT_SECRET(), 'HS256');
+              Flight::json(['token' => $jwt]);
+          } else {
+              Flight::json(["message" => "Wrong password"], 404);
+          }
+      } else {
+          Flight::json(["message" => "User doesn't exist"], 404);
       }
   });
 
@@ -182,25 +176,21 @@
   *     )
   * )
   */
-  Flight::route('POST /register', function()
-  {
-    $register = Flight::request()->data->getData();
-    $existingUser = Flight::userService()->get_user_by_username($register['username']);
+  Flight::route('POST /register', function () {
+      $register = Flight::request()->data->getData();
+      $existingUser = Flight::userService()->get_user_by_username($register['username']);
 
-    if (isset($existingUser['username'])){
-      Flight::json(["message" => "User already exists"], 403);
-    }else if (empty($register['username']) || empty($register['password']) || empty($register['email'])) {
-      Flight::json(["message" => "Make sure you filled all the fields."], 403);
-    }else if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $register['username'])){
-      Flight::json(["message" => "Username must not contain special characters."], 403);
-    }else if (strlen($register['password'])<8) {
-      Flight::json(["message" => "Password must be longer than 8 characters"], 403);
-    }else if (strlen($register['username'])<3){
-      Flight::json(["message" => "Username too short."], 403);
-    }else{
-      Flight::json(Flight::userService()->add(Flight::request()->data->getData()));
-    }
+      if (isset($existingUser['username'])) {
+          Flight::json(["message" => "User already exists"], 403);
+      } elseif (empty($register['username']) || empty($register['password']) || empty($register['email'])) {
+          Flight::json(["message" => "Make sure you filled all the fields."], 403);
+      } elseif (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $register['username'])) {
+          Flight::json(["message" => "Username must not contain special characters."], 403);
+      } elseif (strlen($register['password'])<8) {
+          Flight::json(["message" => "Password must be longer than 8 characters"], 403);
+      } elseif (strlen($register['username'])<3) {
+          Flight::json(["message" => "Username too short."], 403);
+      } else {
+          Flight::json(Flight::userService()->add(Flight::request()->data->getData()));
+      }
   });
-
-
- ?>
